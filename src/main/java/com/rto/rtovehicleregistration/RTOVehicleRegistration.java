@@ -21,10 +21,10 @@ public class RTOVehicleRegistration {
         String[] loginResult;
         String[] VehicleRegDetails;
         int result;
-
+        boolean result1;
         do {
             System.out.println("\t\t\t\t\t*********** Welcome to RTO Vehicle Registration Management System *********** ");
-            System.out.print("1)Login/SignUp\n2)Vehicle Registration\n3)Vehicle Licensing(Examination included for issuing license)4)Check Vehicle Permit Status\n5)Finance\n6)Exit\nEnter your choice[1-6] : ");
+            System.out.print("1)Login/SignUp\n2)Vehicle Registration\n3)Vehicle Licensing(Examination included for issuing license)\n4)Check Vehicle Permit\n5)Finance\n6)Exit\nEnter your choice[1-6] : ");
             choice = sc.nextInt();
             switch (choice) {
                 case 1:
@@ -95,6 +95,30 @@ public class RTOVehicleRegistration {
                 case 3:
                     break;
                 case 4:
+                    System.out.print("Enter your option 1)check vehicle permit status or 2)Permit Vehicle : ");
+                    option = sc.nextInt();
+                    sc.nextLine();
+                    if(option==1){
+                        System.out.print("Enter vehicle registration number : ");
+                        vehicleRegno = sc.nextLine();
+                        VehiclePermit vp1=new VehiclePermit();
+                        result1=vp1.isPermitted(vehicleRegno);
+                        if(result1){
+                            System.out.println(vehicleRegno+" is Permitted");
+                        }else{
+                            System.out.println(vehicleRegno+" is not Permitted");
+                        }
+                    }
+                    else if(option==2){
+                        System.out.print("Enter vehicle registration number : ");
+                        vehicleRegno = sc.nextLine();
+                        VehiclePermit vp2=new VehiclePermit();
+                        System.out.println("Enter '1' to permit or '0' to not permit "+vehicleRegno);
+                        option = sc.nextInt();
+                        vp2.permitVehicle(vehicleRegno,option);
+                    }else{
+                        System.out.println("Invalid option!");
+                    }
                     break;
                 case 5:
                     break;
