@@ -30,35 +30,35 @@ public class AutomatedUnitTestings {
     @AfterEach
     public void tearDown() {
     }
-    @Ignore
+    @Test
     public void loginSignUpTest() throws SQLException {
         LoginSignUp l1=new LoginSignUp("admin","admin@gmail.com","root");
         String result1[]=l1.login();
         assertEquals(result1[0],"1");
         System.out.println("Login Test case passed");
     }
-    @Ignore
+    @Test
     public void vehicleRegistrationTest() throws ClassNotFoundException, SQLException{
         VehicleRegistration vr1=new VehicleRegistration("Ramesh","TN74-TM4272","Audi 2024 Sportback 5500000");
-        String result2[]=vr1.getDetailsNVerify("TN74-TM4272");
+        String result2[]=vr1.getDetailsNVerify("XYZ");
         assertEquals(result2[0],"1");
         System.out.println("Vehicle TN74-TM4272 is Verified and the test case is passed");
     }
-    @Ignore
+    @Test
     public void vehiclePermitTest() throws ClassNotFoundException, SQLException{
         VehiclePermit vp1=new VehiclePermit();
         boolean result=vp1.isPermitted("TN74-TM4272");
         assertTrue(result);
         System.out.println("Vehicle TN74-TM4272 is permitted and the test case is passed");
     }
-    @Ignore
+    @Test
     public void vehicleLicensing() throws ClassNotFoundException, SQLException{
         VehicleLicensing vls1=new VehicleLicensing(21,"Ramesh","kanyakumari","TN74-TM4272");
         boolean result=vls1.provideLicense("ARamesh kumaran",81,1);
         assertTrue(result);
         System.out.println("License for Vehicle TN74-TM4272 is issued and the test case is passed");
     }
-    @Ignore
+    @Test
     public void examinationTest() throws ClassNotFoundException, SQLException{
         Examination e1=new Examination(21,"Ramesh","kanyakumari","TN74-TM4272","ARamesh kumaran");
         boolean result=e1.giveExam(92, 1);
