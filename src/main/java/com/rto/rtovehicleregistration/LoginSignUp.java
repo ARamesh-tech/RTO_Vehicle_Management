@@ -39,7 +39,6 @@ public class LoginSignUp {
             }
         }
         try{
-//            System.out.println(name+" "+emailid+" "+password);
             PreparedStatement ps=con.prepareStatement("select * from users where name=? and emailid=? and password=?");
             ps.setString(1, name);
             ps.setString(2, emailid);
@@ -49,7 +48,6 @@ public class LoginSignUp {
             if(rs.next()){
                 result[0]="1";
                 result[1]=name;
-//                System.out.println("Login Success!, Welcome "+result[1]);
                 return result;
             }
             else{
@@ -72,14 +70,12 @@ public class LoginSignUp {
             }
         }
         try{
-//            System.out.println(name+" "+emailid+" "+password);
             PreparedStatement ps=con.prepareStatement("insert into users values(?,?,?)");
             ps.setString(1, name);
             ps.setString(2, emailid);
             ps.setString(3, password);
             int rs=ps.executeUpdate();
             if(rs>0){
-//                System.out.println("User "+name+" Registered Successfully!");
                 result[0]="1";
                 result[1]=name;
                 return result;
