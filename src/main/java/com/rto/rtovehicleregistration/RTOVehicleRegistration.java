@@ -81,42 +81,61 @@ public class RTOVehicleRegistration {
                         vehicleRegno = sc.nextLine();
                         VehicleRegistration vr2 = new VehicleRegistration("", "", "");
                         VehicleRegDetails = vr2.getDetailsNVerify(vehicleRegno);
-                        if(VehicleRegDetails[0].equals("1")){
-                            System.out.println("Owner : "+VehicleRegDetails[1]);
-                            System.out.println("Vehicle Registration number : "+VehicleRegDetails[2]);
-                            System.out.println("Vehicle Details(Brand, Year, Model, Price) : "+VehicleRegDetails[3]);
-                        }else{
-                            System.out.println("No Vehicle details was found for "+vehicleRegno);
+                        if (VehicleRegDetails[0].equals("1")) {
+                            System.out.println("Owner : " + VehicleRegDetails[1]);
+                            System.out.println("Vehicle Registration number : " + VehicleRegDetails[2]);
+                            System.out.println("Vehicle Details(Brand, Year, Model, Price) : " + VehicleRegDetails[3]);
+                        } else {
+                            System.out.println("No Vehicle details was found for " + vehicleRegno);
                         }
                     } else {
                         System.out.println("Invalid option!");
                     }
                     break;
                 case 3:
+                    sc.nextLine();
+                    System.out.print("Enter your name : ");
+                    name = sc.nextLine();
+                    System.out.print("Enter your age : ");
+                    age = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Enter vehicle registration number : ");
+                    vehicleRegno = sc.nextLine();
+                    System.out.print("Enter your address : ");
+                    address = sc.nextLine();
+                    System.out.print("Enter your signature : ");
+                    signature = sc.nextLine();
+                    System.out.print("Enter CBT Score : ");
+                    int cbtscore = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Do you know driving (1/0) : ");
+                    knowsDriving = sc.nextInt();
+                    VehicleLicensing vls1 = new VehicleLicensing(age, name, address, vehicleRegno);
+                    vls1.provideLicense(signature,cbtscore,knowsDriving);
                     break;
+
                 case 4:
                     System.out.print("Enter your option 1)check vehicle permit status or 2)Permit Vehicle : ");
                     option = sc.nextInt();
                     sc.nextLine();
-                    if(option==1){
+                    if (option == 1) {
                         System.out.print("Enter vehicle registration number : ");
                         vehicleRegno = sc.nextLine();
-                        VehiclePermit vp1=new VehiclePermit();
-                        result1=vp1.isPermitted(vehicleRegno);
-                        if(result1){
-                            System.out.println(vehicleRegno+" is Permitted");
-                        }else{
-                            System.out.println(vehicleRegno+" is not Permitted");
+                        VehiclePermit vp1 = new VehiclePermit();
+                        result1 = vp1.isPermitted(vehicleRegno);
+                        if (result1) {
+                            System.out.println(vehicleRegno + " is Permitted");
+                        } else {
+                            System.out.println(vehicleRegno + " is not Permitted");
                         }
-                    }
-                    else if(option==2){
+                    } else if (option == 2) {
                         System.out.print("Enter vehicle registration number : ");
                         vehicleRegno = sc.nextLine();
-                        VehiclePermit vp2=new VehiclePermit();
-                        System.out.println("Enter '1' to permit or '0' to not permit "+vehicleRegno);
+                        VehiclePermit vp2 = new VehiclePermit();
+                        System.out.println("Enter '1' to permit or '0' to not permit " + vehicleRegno);
                         option = sc.nextInt();
-                        vp2.permitVehicle(vehicleRegno,option);
-                    }else{
+                        vp2.permitVehicle(vehicleRegno, option);
+                    } else {
                         System.out.println("Invalid option!");
                     }
                     break;

@@ -7,7 +7,7 @@ public class LoginSignUp {
     String emailid;
     String password;
     Connection con;
-    
+    public LoginSignUp(){}
     public LoginSignUp(String name,String emailid,String password){
         this.name=name;
         this.emailid=emailid;
