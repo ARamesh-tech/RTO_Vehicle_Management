@@ -15,13 +15,12 @@ public class VehicleRegistration {
     public int registerVehicle() throws ClassNotFoundException, SQLException{
         LoginSignUp conn=new LoginSignUp("admin","admin@gmail.com","root");
         con=conn.getConnection();
-        PreparedStatement ps=con.prepareStatement("insert into vehiclereg values(?,?,?)");
+        PreparedStatement ps=con.prepareStatement("insert into vehiclereg(owner,vehicleregno,vehicledetails) values(?,?,?)");
         ps.setString(1,owner);
         ps.setString(2,vehicleregno);
         ps.setString(3,vehicledetails);
         int rs=ps.executeUpdate();
         if(rs>0){
-            System.out.println("Vehicle "+vehicleregno +" registered successfully!");
             return 1;
         }
         return 0;
@@ -35,6 +34,7 @@ public class VehicleRegistration {
         LoginSignUp conn=new LoginSignUp("admin","admin@gmail.com","root");
         con=conn.getConnection();
         PreparedStatement ps=con.prepareStatement("select * from vehiclereg where vehicleregno=?");
+        ps.setString(1,regno);
         ResultSet rs=ps.executeQuery();
         if(rs.next()){
            vehicleDetails[0]="1";

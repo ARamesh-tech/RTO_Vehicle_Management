@@ -5,7 +5,7 @@ import java.util.*;
 
 public class RTOVehicleRegistration {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
         int choice;
         String name, address, signature;
         String vehicleRegno, vehicleDetails;
@@ -19,6 +19,8 @@ public class RTOVehicleRegistration {
         Scanner sc = new Scanner(System.in);
         int option;
         String[] loginResult;
+        String[] VehicleRegDetails;
+        int result;
 
         do {
             System.out.println("\t\t\t\t\t*********** Welcome to RTO Vehicle Registration Management System *********** ");
@@ -59,6 +61,36 @@ public class RTOVehicleRegistration {
 
                     break;
                 case 2:
+                    System.out.print("Do you want to 1)Register Vehicle or 2)GetDetails and Verify : ");
+                    option = sc.nextInt();
+                    sc.nextLine();
+                    if (option == 1) {
+                        System.out.print("Enter owner name : ");
+                        name = sc.nextLine();
+                        System.out.print("Enter vehicle registration number : ");
+                        vehicleRegno = sc.nextLine();
+                        System.out.print("Enter Vehicle Details(Brand, Year, Model, Price) : ");
+                        vehicleDetails = sc.nextLine();
+                        VehicleRegistration vr1 = new VehicleRegistration(name, vehicleRegno, vehicleDetails);
+                        result = vr1.registerVehicle();
+                        if (result == 1) {
+                            System.out.println(vehicleRegno + " Registered successfully!");
+                        }
+                    } else if (option == 2) {
+                        System.out.print("Enter vehicle registration number : ");
+                        vehicleRegno = sc.nextLine();
+                        VehicleRegistration vr2 = new VehicleRegistration("", "", "");
+                        VehicleRegDetails = vr2.getDetailsNVerify(vehicleRegno);
+                        if(VehicleRegDetails[0].equals("1")){
+                            System.out.println("Owner : "+VehicleRegDetails[1]);
+                            System.out.println("Vehicle Registration number : "+VehicleRegDetails[2]);
+                            System.out.println("Vehicle Details(Brand, Year, Model, Price) : "+VehicleRegDetails[3]);
+                        }else{
+                            System.out.println("No Vehicle details was found for "+vehicleRegno);
+                        }
+                    } else {
+                        System.out.println("Invalid option!");
+                    }
                     break;
                 case 3:
                     break;
