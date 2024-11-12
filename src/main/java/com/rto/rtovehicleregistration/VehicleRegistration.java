@@ -2,11 +2,12 @@ package com.rto.rtovehicleregistration;
 
 import java.sql.*;
 
-public class VehicleRegistration {
+public class VehicleRegistration extends LoginSignUp{
     String owner;
     String vehicleregno;
     String vehicledetails;
     Connection con;
+    public VehicleRegistration(){}
     public VehicleRegistration(String owner,String vehicleregno,String vehicledetails){
         this.owner=owner;
         this.vehicleregno=vehicleregno;

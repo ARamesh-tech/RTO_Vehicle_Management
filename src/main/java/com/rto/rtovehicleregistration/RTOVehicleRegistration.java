@@ -10,10 +10,7 @@ public class RTOVehicleRegistration {
         String name, address, signature;
         String vehicleRegno, vehicleDetails;
         String emailId, password;
-        int vehiclePermit;
-        float balance;
         int age;
-        int examScore;
         int knowsDriving;
         String ans = "y";
         Scanner sc = new Scanner(System.in);
@@ -21,6 +18,7 @@ public class RTOVehicleRegistration {
         String[] loginResult;
         String[] VehicleRegDetails;
         int result;
+        double fundamnt,amount;
         boolean result1;
         do {
             System.out.println("\t\t\t\t\t*********** Welcome to RTO Vehicle Registration Management System *********** ");
@@ -111,7 +109,7 @@ public class RTOVehicleRegistration {
                     System.out.print("Do you know driving (1/0) : ");
                     knowsDriving = sc.nextInt();
                     VehicleLicensing vls1 = new VehicleLicensing(age, name, address, vehicleRegno);
-                    vls1.provideLicense(signature,cbtscore,knowsDriving);
+                    vls1.provideLicense(signature, cbtscore, knowsDriving);
                     break;
 
                 case 4:
@@ -140,6 +138,26 @@ public class RTOVehicleRegistration {
                     }
                     break;
                 case 5:
+                    Finance f1 = new Finance();
+                    System.out.print("Enter '1' to pool funds, '2' for Economic Development, '3' for Decision Making : ");
+                    option = sc.nextInt();
+                    sc.nextLine();
+                    if (option == 1) {
+                        System.out.print("Enter fund amount : ");
+                        fundamnt = sc.nextDouble();
+                        f1.poolFunds(fundamnt);
+                    }
+                    else if(option ==2){
+                        System.out.print("Enter amount to be used for Economic Development : ");
+                        amount=sc.nextDouble();
+                        f1.economicDevelopment(amount);
+                    }
+                    else if(option==3){
+                        f1.decisionMaking();
+                    }
+                    else{
+                        System.out.println("Invalid option!");
+                    }
                     break;
                 case 6:
                     break;

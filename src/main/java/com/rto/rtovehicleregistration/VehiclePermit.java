@@ -2,8 +2,7 @@ package com.rto.rtovehicleregistration;
 
 import java.sql.*;
 
-public class VehiclePermit {
-
+public class VehiclePermit extends VehicleRegistration{
     String vehicleregno;
     int rf;
     Connection con;
